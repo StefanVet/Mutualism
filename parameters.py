@@ -10,7 +10,7 @@ Created on Sat Oct  5 09:17:09 2019
 import numpy as np
 
 class Parameters(object):
-    
+    """ Creates an object defined by the parameters of the mutualistic system. Parameters can be suggested via the dictionary <params_opt> """
     def __init__(self,**params_opt):
         
         # Dilution rate
