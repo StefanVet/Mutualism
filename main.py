@@ -24,21 +24,23 @@ print(P.par_simpl)
 x = np.linspace(0,P.C0[0],1000)
 y = np.linspace(0,P.C0[1],1000)
 
-# Allee
+# Simulate Allee effect with different initial densities
 t,R_a1 = solveODE(P.par_Allee,dynamics_Allee,x0=.3,t_f=100.)
 t,R_a2 = solveODE(P.par_Allee,dynamics_Allee,x0=.1,t_f=100.)
 
-# Simplified
+# Simulated the reduced mutualistic system
 t,R1 = solveODE(P.par_simpl,dynamics_simpl,x0 = [.6,.6],t_f=100.)
 t,R2 = solveODE(P.par_simpl,dynamics_simpl,x0 = [.1,.1],t_f=100.)
 
+# Reduce the dilution rate. Not necessary for high Monod constants.
 P = Parameters(phi=0.1)
 
-# Chemostat
+# Simulate the mutualistic system with nutrients 
 t,R_chem1 = solveODE(P.param,dynamics_chem,x0 = [.9,.9,1.,1.,1.,1.],t_f=100.)
 t,R_chem2 = solveODE(P.param,dynamics_chem,x0 = [.1,.1,1.,1.,.01,.01],t_f=100.)
 
 
+# Figure of the Allee effect for different initial densities.
 fig,ax = plt.subplots(1,3,figsize=(8,3),tight_layout=True)
 for i,R in enumerate([R_a1,R_a2]):
     ax[i].plot(t,R,c="blue")
@@ -54,7 +56,7 @@ ax[2].set_ylabel("Per capita growth")
 ax[2].set_xlim(0,1.)
 plt.show()
 
-
+# Figure of the reduced mutualistic system without nutrients
 colors = ["blue","purple"]
 fig,axes = plt.subplots(1,2,figsize=(8,3),tight_layout=True)
 ax1,ax2 = axes
@@ -69,10 +71,11 @@ plt.show()
 
 fig,axes = plt.subplots(2,2,figsize=(8,6),tight_layout=True)
 
+# Figure of the complete mutualistic system with nutrients
 colors=["blue","purple","red","green"]
 for i,R in enumerate([R_chem1,R_chem2]):
-    Rx = R[:,:2]
-    Rs = R[:,2:]
+    Rx = R[:,:2] # Species density
+    Rs = R[:,2:] # Nutrient concentrations
     for j,Ri in enumerate([Rx,Rs]):
         ax = axes[j,i]
         ax.set_xlabel("time t")
