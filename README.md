@@ -10,4 +10,4 @@ The class <parameters.py> creates an object defined by its parameters, which can
 
 The file <dynamics.py> contains code to solve the differential equations
 
-The file <bifurcation.py> contains code to perform a bifurcaiton analysis
+The file <bifurcation.py> contains code to perform a bifurcation analysis
