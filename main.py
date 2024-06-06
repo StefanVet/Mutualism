@@ -20,9 +20,9 @@ print(P.param)
 print(P.par_simpl)
 
 """ Make phase plane of the extended LV system """
-
 x = np.linspace(0,P.C0[0],1000)
 y = np.linspace(0,P.C0[1],1000)
+phasePlane(x,y,P.par_simpl,nullclines) # Steady states are given by the origin and the intersection of the nullclines.
 
 # Simulate Allee effect with different initial densities
 t,R_a1 = solveODE(P.par_Allee,dynamics_Allee,x0=.3,t_f=100.)
