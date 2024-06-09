@@ -1,6 +1,6 @@
 # Mutualism
-Modeling a mutualistic microbial system
-
+Modeling a mutualistic microbial system that can display bistability.
+A detailed description of the equations and dynamics, can be found in https://www.nature.com/articles/s41598-020-63772-4
 
 This project concerns the modeling of a microbial system that consists of two mutualistic cross-feeding species. 
 
